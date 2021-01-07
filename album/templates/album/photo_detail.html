@@ -5,13 +5,8 @@
 {% block section %}
     <h2>
         {{ object.title }}
-        {% if object.favorite %}
-            &#9733;
-        {% else %}
-            &#9734;
-        {% endif %}
         {% if object.category_id %}
-            ( <a href="{% url "category-detail" object.category_id %}">{{ object.category.name }}</a> )
+            <a href="{% url "category-detail" object.category_id %}">{{ object.category.name }}</a>
         {% endif %}
     </h2>
     <a href="{% url "photo-update" object.id %}">Editar</a>
