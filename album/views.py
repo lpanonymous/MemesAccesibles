@@ -54,9 +54,22 @@ def memes_accesible(request):
                 if opcion == "uno" or opcion =="1":
                     engine.say("Elegiste la opción uno.")
                     engine.runAndWait()
-                    for categoria in Category.objects.all():
-                        engine.say(categoria.name)
+                    opcion2 = "escuchar"
+                    while opcion2 != "adios":
+                        state = 1
+                        while state == 1: 
+                            if opcion2 == "escuchar":
+                                for categoria in Category.objects.all():
+                                    engine.say(categoria.id)
+                                    engine.say(categoria.name)
+                                    engine.runAndWait()
+                                state = 0
+                        print("Di escuchar para repetir las plantillas o adios para salir de la opción.")
+                        engine.say("Di escuchar para repetir las plantillas o no digas nada para salir de la opción.")
                         engine.runAndWait()
+                        audio2 = r.listen(source)
+                        opcion2 = r.recognize_google(audio2, language = 'es-ES')
+                        state=1
                     engine.say("Elige una opción.")
                     engine.runAndWait()
                     o = 1
@@ -89,10 +102,6 @@ def memes_accesible(request):
                                     state = 0 
                                 if categoria.name.lower() != opcion2.lower():
                                     state = 1
-                                if opcion2 == "adios":
-                                        state = 0
-                                    
-                                
                     engine.say("Elige una opción.")
                     engine.runAndWait()
                     o = 1
@@ -122,6 +131,7 @@ def memes_accesible(request):
                     engine.say("Tres.-Elegir una plantilla para escuchar un meme.")
                     engine.say("Cuatro.-Repetir menú de opciones.")
                     engine.say("Cero.-Salir del sistema.")
+                    engine.say("Adios.-Salir de una opción.")
                     engine.say("Elige el número de una opción.")
                 elif opcion == "cero" or opcion =="0":
                     engine.say("Elegiste la opción cero, adios.")
