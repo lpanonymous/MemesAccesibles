@@ -64,7 +64,7 @@ def memes_accesible(request):
                                     engine.say(categoria.name)
                                     engine.runAndWait()
                                 state = 0
-                        print("Di escuchar para repetir las plantillas o adios para salir de la opción.")
+                        print("Di escuchar para repetir las plantillas o no digas nada para salir de la opción.")
                         engine.say("Di escuchar para repetir las plantillas o no digas nada para salir de la opción.")
                         engine.runAndWait()
                         audio2 = r.listen(source)
@@ -125,14 +125,15 @@ def memes_accesible(request):
                             engine.say("Elige una opción.")
                             engine.runAndWait()
                             o = 1
-                elif opcion =="cuatro" or opcion =="4":
+                elif opcion =="cuatro" or opcion == "4":
                     engine.say("Uno.-Nombres de plantillas.")
                     engine.say("Dos.-Detalles de una plantilla.")
                     engine.say("Tres.-Elegir una plantilla para escuchar un meme.")
                     engine.say("Cuatro.-Repetir menú de opciones.")
                     engine.say("Cero.-Salir del sistema.")
-                    engine.say("Adios.-Salir de una opción.")
                     engine.say("Elige el número de una opción.")
+                    engine.runAndWait()
+                    o = 1
                 elif opcion == "cero" or opcion =="0":
                     engine.say("Elegiste la opción cero, adios.")
                     print("Elegiste la opción cero, adios.")
